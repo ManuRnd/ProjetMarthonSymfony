@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+    <style>
+        body{
+            background: black;
+        }
+        h1{
+            color: greenyellow;
+            font-size: 2.5rem;
+        }
+        h2{
+            color: white;
+            font-size: 2rem;
+        }
+		h3{
+            color: cyan;
+            font-size: 1.5rem;
+        }
+        hr{
+            color: yellow;
+        }
+        a{
+            color: cyan;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Tp Gris ! ( 5 points bonus pour semaine prochaine ) à rendre en PR merci</h1>
+<h1>Le but est la gestion des deks des joueurs</h1>
+<h2>1 - Création Entity UserCard + update fixtures</h2>
+<h3>
+actionPoint : integer<br/>
+attack : integer<br/>
+defence : integer<br />
+card : Card<br />
+user : User<br />
+</h3>
+<h3>Création de fixtures de cartes 5 + au moins 3 utilisateurs</h3>
+<h2>2 - Création form add/edit/delete UserCard avec event (en clair le formulaire d'ajout de carte ne doit pas avoir la card ni le user !)
+Pas entityManager dans le add/edit/delete ! merci</h2>
+<h3>Seul l'utilisateur peux ajouter ses propres cartes<br />( En clair dans la liste des cartes , je clique sur ajouter et j'arrive sur le formulaire d'ajout USerCard avec seulement actionPoint, attack, defence</h3>
+<h3>Le nombre max de carte que peux avoir un joueur dans son deck est un paramètre d'environement !</h3>
+<h2>3 - ajouter un historique par action ( qui a ajouter une carte, detail de la carte et date - Entité à créer !) ( pensez évenement )</h2>
+<h2>4 - Lister les cartes du joueurs( logué !) </h2>
+
+<h2>5 - Controles d'accées sur la page liste des cartes du joueurs et pour chaque cartes ( UserCardVoter !)</h2>
+<h2>5 - Une carte est representé avec une macro twig ( liste de toutes les cartes , liste carte joueur, page show carte )</h2>
+<h1>Le compte ADMIN peux voir tous les joueurs, toutes les cartes de tout les joueurs</h1>
+<h1>Le compte User ne peux voir que ses propres cartes</h1>
+<a href="exo_1.html">Exo1</a>
+<a href="exo_2.html">Exo2</a>
+<a href="exo_3.html">Exo3</a>
+</body>
+</html>

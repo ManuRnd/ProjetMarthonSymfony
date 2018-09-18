@@ -1,0 +1,14 @@
+
+{% block body %}
+
+    <h2>index vote</h2>
+
+    <ul>
+        {% for vote in votes %}
+            <li>
+                {{ vote.value }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+
+    <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="" id="contact1">
+
+                        <h2 class='text-center' id='loginTitle'>Gestion des commentaires</h2>
+                        </br>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+
+                                        <table id="commentsTable" class="table" border=1>
+                                            <tr>
+                                                <th>Entrainement</th>
+                                                <th>Commentaire</th>
+                                                <th>Auteur</th>
+                                                <th>Date de création</th>
+                                                <th>Date de modification</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            {% for comment in comments %}
+                                            <tr>
+                                                <td>{{ comment.training.name }}</td>
+                                                <td>{{ comment.content }}</td>
+                                                <td>{{ comment.user.name }}</td>
+                                                <td>{{ comment.createdAt | date("Y-m-d") }}</td>
+                                                <td>{{ comment.updatedAt | date("Y-m-d") }}</td>
+                                                <td><a href="{{ path('app_comment_delete', {'id': comment.id}) }}"><input
+                                                                type="button" class="tableButton" value="Supprimer"></a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                                <!-- /.row -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html.twig' %}
+
+{% endblock body %}

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default ">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="{{ path('welcome') }}"><img src="{{ asset("assets/img/logo.png") }}" alt="Logo DailyWorkout"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse yamm" id="navigation">
+            <div class="button navbar-right">
+                {% if not app.user %}
+                    <a href="{{ path('login') }}"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Se connecter</button></a>
+                    <a href="{{ path('register') }}"><button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.48s">S'inscrire</button></a>
+                {% else %}
+                    <a href="{{ path('logout') }}"><button class="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.48s">Se déconnecter</button></a>
+                {% endif %}
+            </div>
+            <ul class="main-nav nav navbar-nav navbar-right">
+                {% if app.user %}
+                    <li class="wow fadeInDown active" data-wow-delay="0.2s"><a class="" href="{{ path('welcome') }}">Accueil</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{{ path('app_article_index') }}">Articles</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="{{ path('app_training_index') }}">Entraînements</a></li>
+
+                    {% if app.user.isAdmin %}
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="{{ path('admin') }}">Admin</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

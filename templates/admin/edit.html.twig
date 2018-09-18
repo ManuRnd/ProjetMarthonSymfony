@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {% include 'navbar.html.twig' %}
+
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+
+    <div class="content">
+        {{ form_start(form, {'attr':{'novalidate': 'novalidate'}}) }}
+
+            <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="" id="contact1">
+                                <h2 class='text-center' id='loginTitle'>Edition d'un utilisateur</h2>
+                                </br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Nom</label>
+                                            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                                            {% if form_errors(form.name) %}
+                                                <div class="col-sm-12 text-center">
+                                                    <label class='text-center' for="error">{{ form_errors(form.name) }}</label>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                            {% if form_errors(form.email) %}
+                                                <div class="col-sm-12 text-center">
+                                                    <label class='text-center' for="error">{{ form_errors(form.email) }}</label>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="user_plainPassword_first">Mot de passe</label>
+                                            {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="user_plainPassword_second">Confirmation mot de passe</label>
+                                            {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" class="btn btn-primary" id="user_save" name="user[save]"><i class="fa fa-user"></i> Modifier</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    {% include 'footer.html.twig' %}
+
+{% endblock %}

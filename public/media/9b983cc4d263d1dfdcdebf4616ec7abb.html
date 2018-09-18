@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+    <style>
+        body{
+            background: black;
+        }
+        h1{
+            color: greenyellow;
+            font-size: 2.5rem;
+        }
+        h2{
+            color: white;
+            font-size: 2rem;
+        }
+		h3{
+            color: cyan;
+            font-size: 1.5rem;
+        }
+        hr{
+            color: yellow;
+        }
+        a{
+            color: cyan;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<h1>les macros twig</h1>
+<h2>c'est koi ?</h2>
+<h3>
+{% macro yesno(value) %}<br />
+    {% if value %}<br />
+        <span class="yes">{{ 'yes'|trans }}</span><br />
+    {% else %}<br />
+        <span class="no">{{ 'no'|trans }}</span><br />
+    {% endif %}<br />
+{% endmacro %}<br />
+<br />
+{% macro datetime(value) %}<br />
+    {% if value %}<br />
+        {{ value|date('d/m/Y H:i:s') }}<br />
+    {% endif %}<br />
+{% endmacro %}<br />
+</h3>
+<h3>{% import "macro.html.twig" as macro %}</h3>
+<a href="exo_1.html">Exo1</a>
+<a href="exo_2.html">Exo2</a>
+<a href="exo_4.html">Exo4</a>
+</body>
+</html>

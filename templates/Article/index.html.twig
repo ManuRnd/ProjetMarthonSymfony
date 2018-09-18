@@ -1,0 +1,67 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {% include 'navbar.html.twig' %}
+
+    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;"
+         xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 titre">
+                    <div class=titre><h1>Articles</h1></div>
+                    <form>
+                        <select name="forma" onchange="location = this.value;">
+                            <option>Trier par</option>
+                            <option value="{{ path('app_article_index', {"orderBy":"hitcount"}) }}">Popularité</option>
+                            <option value="{{ path('app_article_index', {"orderBy":"created_at"}) }}">Date de sortie</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+
+            {% for article in articles %}
+
+            <div class="row">
+                <div class="blog-lst col-md-12 pl0">
+                    <section class="post">
+                        <div class="text-center padding-b-50">
+                            <h2 class="wow fadeInLeft animated">{{ article.title }}</h2>
+                            <div class="title-line wow fadeInRight animated"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="author-category">
+                                    Par <a href="#">{{ article.user.name }}</a>
+                                </p>
+                            </div>
+                            <div class="col-sm-6 right" >
+                                <p class="date-comments">
+                                    <i class="fa fa-calendar-o"></i> {{ article.createdAt | date('d-m-Y') }}
+                                    <i class="fa fa-eye"></i> Vu {{ article.hitcount }} fois
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-7 image wow fadeInLeft animated">
+
+                                <img src="{{ asset(article.media.path) }}" class="img-responsive" alt="image {{ article.media.title }}">
+
+                        </div>
+                        <p class="intro">{{ article.summary }}</p>
+                        <p class="read-more">
+                            <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-primary my-btn2">Lire la suite</a>
+                        </p>
+                    </section>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+    {% include 'footer.html.twig' %}
+{% endblock %}

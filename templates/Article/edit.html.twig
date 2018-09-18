@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="" id="contact1">
+
+                        <h2 class='text-center' id='loginTitle'>Modifier un article</h2>
+                        </br>
+
+                        <div class="row">
+
+                            {{ form_start(form, {'attr':{'novalidate': 'novalidate'}}) }}
+                            {{ form_widget(form) }}
+                            {{ form_end(form) }}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html.twig' %}
+
+{% endblock body %}

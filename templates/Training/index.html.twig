@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 titre">
+                    <div class=titre>
+                        <h1>Entrainements</h1>
+                    </div>
+                        <select name="forma" onchange="location = this.value;">
+                            <option>Trier par</option>
+                            <option value="{{ path('app_training_index', {"orderBy":"moyenne"}) }}">Popularité</option>
+                            <option value="{{ path('app_training_index', {"orderBy":"updated_at"}) }}">Date de modification</option>
+                        </select>
+                </div>
+
+
+
+            </div>
+
+
+            {% for training in trainings%}
+            <div class="row">
+                <div class="blog-lst col-md-12 pl0">
+                    <section class="post">
+                        <div class="text-center padding-b-50">
+                            <h2 class="wow fadeInLeft animated">{{ training.name }}</h2>
+                            <div class="title-line wow fadeInRight animated"></div>
+                        </div>
+
+                        {% if (training.moyenne is defined) %}
+                        <p class="intro" >Note:
+                            {% for i in range(0,training.moyenne) %}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            {% endfor %}
+                        </p>
+                        {% endif %}
+
+                        <p class="intro" > Difficulté:
+                            {% if training.difficulty == 1 %}
+                            <i class="fa fa-battery-slow" aria-hidden="true"></i>
+                            {% elseif training.difficulty == 3 %}
+                            <i class="fa fa-battery-full" aria-hidden="true"></i>
+                            {% else %}
+                            <i class="fa fa-battery-half" aria-hidden="true"></i>
+                            {% endif %}
+                        </p>
+
+                        {% if (training.training_time is defined) %}
+                        <p class="intro" ><i class="fa fa-clock-o" aria-hidden="true"> {{ training.training_time | date("H:i:s") }}</i></p>
+                        {% endif %}
+
+                        <p class="read-more">
+                            <a href="{{ path('app_training_show', {id: training.id}) }}" class="btn btn-default btn-border">Lire la suite</a>
+                        </p>
+                    </section>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+    {% include 'footer.html.twig' %}
+
+{% endblock %}

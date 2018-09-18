@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="flex-center position-ref full-height">
+        {% include 'navbar.html.twig' %}
+
+        <!-- property area -->
+
+        <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="" id="contact1">
+
+                            <h2 class='text-center' id='loginTitle'>Gestion des utilisateurs</h2>
+                            </br>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+
+                                        <table id="commentsTable" class="table" border=1>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Email</th>
+                                                <th>Admin</th>
+                                                <th>Date de création</th>
+                                                <th>Date de modification</th>
+                                                <th colspan=3>Actions</th>
+                                            </tr>
+
+                                            {% for user in users %}
+                                                <tr>
+                                                    <td>{{ user.name }}</td>
+                                                    <td>{{ user.email }}</td>
+                                                    <td>{{ not user.isAdmin ? 'no' : 'yes' }}</td>
+                                                    <td>{{ user.createdAt | date("Y-m-d") }}</td>
+                                                    <td>{{ user.updatedAt | date("Y-m-d") }}</td>
+                                                    <td><a href="{{ path('app_admin_edit', {'id': user.id}) }}"><input
+                                                                    type="button" class="tableButton"
+                                                                    value="Editer"></a></td>
+                                                    <td><a href="{{ path('app_admin_block', {'id': user.id}) }}"><input
+                                                                    type="button" class="tableButton"
+                                                                    value="Bloquer"></a></td>
+                                                    <td><a href="{{ path('app_admin_delete', {'id': user.id}) }}"><input
+                                                                    type="button" class="tableButton" value="Supprimer"></a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="links">
+                <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html.twig' %}
+{% endblock %}

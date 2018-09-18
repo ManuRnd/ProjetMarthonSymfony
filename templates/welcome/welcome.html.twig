@@ -1,0 +1,117 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+
+    <!-- CAROUSEL -->
+
+    <div class="slider-area">
+        <div class="slider">
+            <div id="bg-slider" class="owl-carousel owl-theme">
+                <div class="item" id="slide1"><img></div>
+                <div class="item" id="slide2"><img></div>
+                <div class="item" id="slide3"><img></div>
+            </div>
+        </div>
+        <div class="slider-content">
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 carousel-opacity">
+                    <br>
+                    <h2 class="carousel-text">Découvrez nos derniers articles musculation !</h2>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 text-center">
+                    <a class="btn btn-primary my-btn" href="{{ path('app_article_index') }}">Nos articles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- property area -->
+    <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+        <div class="container">
+            <div class="row">
+    <!-- DERNIERS ARTICLES -->
+                <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center page-title">
+                    <h2>Nos derniers articles</h2>
+
+                    <div class="proerty-th">
+
+                        {% for article in articles | slice(0,3) %}
+                        <div class="col-md-12">
+                            <div class="box-two proerty-item">
+                                <div class="item-thumb">
+                                    <a href="{{ path('app_article_show', {id: article.id}) }}" ><img src="{{ article.media.path }}"></a>
+                                </div>
+                                <div class="item-entry overflow">
+                                    <h5><a href="{{ path('app_article_show', {id: article.id}) }}" >{{ article.title }}</a></h5>
+                                    <span>&nbsp;</span>
+                                    <div class="dot-hr"></div>
+                                    <div class="text-justify">{{ article.summary }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <a href="{{ path('app_article_index') }}" ><button class="btn btn-primary my-btn2">Voir tous les articles</button></a>
+
+                </div>
+
+                <!-- SEPARTEUR MILIEU -->
+                <div class="col-lg-2"></div>
+
+                <!-- ENTRAINEMENTS -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center page-title">
+                    <h2>Nos derniers entraînements</h2>
+
+                    <div class="proerty-th">
+
+                        {% for training in trainings | slice(0,3) %}
+                        <div class="col-lg-12">
+                            <div class="box-two proerty-item">
+                                <div class="item-thumb">
+                                    <a href="{{ path('app_training_index') }}" ><img src="assets/img/demo/property-1.jpg"></a>
+                                </div>
+                                <div class="item-entry overflow">
+                                    <h5><a href="{{ path('app_training_index') }}" >{{ training.name }}</a></h5>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{ training.trainingTime | date("H-i-s") }}'
+                                    <span>&nbsp;</span>
+                                    {% if training.difficulty == 1 %}
+                                        <i class="fa fa-battery-quarter" aria-hidden="true"></i> Facile
+                                    {% elseif training.difficulty == 2 %}
+                                        <i class="fa fa-battery-half" aria-hidden="true"></i> Moyen
+                                    {% else %}
+                                        <i class="fa fa-battery-full" aria-hidden="true"></i> Difficile
+                                    {% endif %}
+                                    <div class="dot-hr"></div>
+                                    <div class="text-justify"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <a href="{{ path('app_training_index') }}" ><button class="btn btn-primary my-btn2">Voir tous les entraînements</button></a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'footer.html.twig' %}
+
+{% endblock %}

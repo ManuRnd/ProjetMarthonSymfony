@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {% include 'navbar.html.twig' %}
+
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+
+    <div class="content">
+
+        <form action="{{ path('login') }}" method="post">
+
+            <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="" id="contact1">
+                                <h2 class='text-center' id='loginTitle'>Connexion</h2>
+                                </br>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3 text-center">
+                                            <div class="form-group">
+                                                <label class='text-left' for="username">Identifiant</label>
+                                                <input type="text" class="form-control" id="id" name="_username" value="{{ last_username }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-sm-offset-3 text-center">
+                                            <div class="form-group">
+                                                <label class='text-left' for="password">Mot de passe</label>
+                                                <input type="password" class="form-control" id="password" name="_password">
+                                            </div>
+                                        </div>
+
+                                        {% if error %}
+                                            <div class="col-sm-6 col-sm-offset-3 text-center">
+                                                <div class="form-group">
+                                                    <label class='text-center' for="error">{{ error.messageKey|trans(error.messageData, 'security') }}</label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="col-sm-12 text-center">
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Se connecter</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#
+                If you want to control the URL the user
+                is redirected to on success (more details below)
+                <input type="hidden" name="_target_path" value="/account" />
+            #}
+        </form>
+
+    </div>
+
+    {% include 'footer.html.twig' %}
+
+{% endblock %}

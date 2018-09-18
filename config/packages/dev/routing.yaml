@@ -1,0 +1,6 @@
+framework:
+    router:
+        strict_requirements: true
+
+twig:
+    exception_controller: App\Controller\ExceptionController::showException

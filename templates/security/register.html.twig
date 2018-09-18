@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {% include 'navbar.html.twig' %}
+
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+
+    <div class="content">
+        <form action="{{ path('register') }}" method="post">
+
+            <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="" id="contact1">
+                                <h2 class='text-center' id='loginTitle'>Inscription</h2>
+                                </br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Nom</label>
+                                            <input type="text" class="form-control" id="user_name" name="user[name] required="required">
+                                            {% if form_errors(form.name) %}
+                                                <div class="col-sm-12 text-center">
+                                                    <label class='text-center' for="error">{{ form_errors(form.name) }}</label>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="user_email" name="user[email] required="required">
+                                            {% if form_errors(form.email) %}
+                                                <div class="col-sm-12 text-center">
+                                                    <label class='text-center' for="error">{{ form_errors(form.email) }}</label>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="user_plainPassword_first">Mot de passe</label>
+                                            <input type="password" class="form-control" id="user_plainPassword_first" name="user[plainPassword][first]" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="user_plainPassword_second">Confirmation mot de passe</label>
+                                            <input type="password" class="form-control" id="user_plainPassword_second" name="user[plainPassword][second]" required="required">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" class="btn btn-primary" id="user_save" name="user[save]"><i class="fa fa-user"></i>S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% include 'footer.html.twig' %}
+
+{% endblock %}
